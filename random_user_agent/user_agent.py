@@ -44,7 +44,7 @@ class UserAgent:
             self.user_agents += [user_agent['user_agent']]
 
     def _get_user_agents(self):
-        file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'user_agents.zip')
+        file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data/user_agents.zip')
 
         with zipfile.ZipFile(file_path) as zipped_user_agents:
             with zipped_user_agents.open('user_agents.json') as file:

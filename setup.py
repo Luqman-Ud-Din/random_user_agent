@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="random_user_agent",
-    version="0.0.4",
+    version="0.0.5",
     author="Luqman-Ud-Din Muhammad",
     author_email="luqmanuddinm@gmail.com",
     description="A package to get random user agents based filters provided by user",
@@ -19,4 +19,5 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    package_data={'random_user_agent': ['data/*.zip']},
 )
