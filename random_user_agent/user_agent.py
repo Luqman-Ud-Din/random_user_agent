@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import zipfile
 
 
 class UserAgent:
@@ -43,10 +44,11 @@ class UserAgent:
             self.user_agents += [user_agent['user_agent']]
 
     def _get_user_agents(self):
-        file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'user_agents.json')
+        file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'user_agents.zip')
 
-        with open(file_path) as file:
-            user_agents = file.read()
+        with zipfile.ZipFile(file_path) as zipped_user_agents:
+            with zipped_user_agents.open('user_agents.json') as file:
+                user_agents = file.read()
 
         return json.loads(user_agents)
 
