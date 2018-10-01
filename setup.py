@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="random_user_agent",
-    version="0.0.5",
+    version="0.0.6",
     author="Luqman-Ud-Din Muhammad",
     author_email="luqmanuddinm@gmail.com",
     description="A package to get random user agents based filters provided by user",

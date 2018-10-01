@@ -6,7 +6,6 @@ import zipfile
 
 class UserAgent:
     ATTRIBUTES_MAP = {
-        'user_agents': [],
         'hardware_types': [],
         'software_types': [],
         'software_names': [],
@@ -15,35 +14,32 @@ class UserAgent:
     }
 
     def __init__(self, *args, **kwargs):
-        for attribute, default in self.ATTRIBUTES_MAP.items():
-            setattr(self, attribute, kwargs.get(attribute, default))
+        self.raw_user_agents = []
+        self.user_agents = []
 
-        _user_agents = self._get_user_agents()
-        self._hardware_types = set([ua['hardware_type'] for ua in _user_agents])
-        self._software_types = set([ua['software_type'] for ua in _user_agents])
-        self._software_names = set([ua['software_name'] for ua in _user_agents])
-        self._software_engines = set([ua['software_engine'] for ua in _user_agents])
-        self._operating_systems = set([ua['operating_system'] for ua in _user_agents])
+        for attribute, values in self.ATTRIBUTES_MAP.items():
+            setattr(self, attribute, kwargs.get(attribute, [v.lower() for v in values]))
 
-        for user_agent in _user_agents:
-            if self.hardware_types and user_agent['hardware_type'] not in self.hardware_types:
+        for user_agent in self.load_user_agents():
+            if self.hardware_types and user_agent['hardware_type'].lower() not in self.hardware_types:
                 continue
 
-            if self.software_types and user_agent['software_type'] not in self.software_types:
+            if self.software_types and user_agent['software_type'].lower() not in self.software_types:
                 continue
 
-            if self.software_names and user_agent['software_name'] not in self.software_names:
+            if self.software_names and user_agent['software_name'].lower() not in self.software_names:
                 continue
 
-            if self.software_engines and user_agent['software_engine'] not in self.software_engines:
+            if self.software_engines and user_agent['software_engine'].lower() not in self.software_engines:
                 continue
 
-            if self.operating_systems and user_agent['operating_system'] not in self.operating_systems:
+            if self.operating_systems and user_agent['operating_system'].lower() not in self.operating_systems:
                 continue
 
             self.user_agents += [user_agent['user_agent']]
+            self.raw_user_agents += [user_agent]
 
-    def _get_user_agents(self):
+    def load_user_agents(self):
         file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data/user_agents.zip')
 
         with zipfile.ZipFile(file_path) as zipped_user_agents:
@@ -52,25 +48,23 @@ class UserAgent:
 
         return json.loads(user_agents)
 
-    def random_user_agent(self):
+    def get_user_agents(self):
+        return self.raw_user_agents
+
+    def get_random_user_agent(self):
         return random.choice(self.user_agents)
 
-    @property
-    def list_all_operating_systems(self):
-        return self._operating_systems
+    def get_operating_systems(self):
+        return set([ua['operating_system'].lower() for ua in self.get_user_agents()])
 
-    @property
-    def list_all_hardware_types(self):
-        return self._hardware_types
+    def get_hardware_types(self):
+        return set([ua['hardware_type'].lower() for ua in self.get_user_agents()])
 
-    @property
-    def list_all_software_types(self):
-        return self._software_types
+    def get_software_types(self):
+        return set([ua['software_type'].lower() for ua in self.get_user_agents()])
 
-    @property
-    def list_all_software_names(self):
-        return self._software_names
+    def get_software_names(self):
+        return set([ua['software_name'].lower() for ua in self.get_user_agents()])
 
-    @property
-    def list_all_software_engines(self):
-        return self._software_engines
+    def get_software_engines(self):
+        return set([ua['software_engine'].lower() for ua in self.get_user_agents()])
