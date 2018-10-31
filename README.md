@@ -85,7 +85,7 @@ To get user agents of browser `chrome` based on operating systems `windows` or `
 
 License
 -------
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/Luqman-Ud-Din/random_user_agent/blob/master/LICENSE) for more information.
 
 
 User Agents Source
