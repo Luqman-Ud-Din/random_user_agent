@@ -46,6 +46,9 @@ class UserAgent:
             with zipped_user_agents.open('user_agents.json') as file:
                 user_agents = file.read()
 
+        if hasattr(user_agents, 'decode'):
+            user_agents = user_agents.decode()
+
         return json.loads(user_agents)
 
     def get_user_agents(self):

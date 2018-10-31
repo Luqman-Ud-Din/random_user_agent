@@ -55,7 +55,7 @@ To get user agents of browser `chrome` based on operating systems `windows` or `
 
 
 ```python
-    from random_user_agents.user_agent import UserAgent
+    from random_user_agent.user_agent import UserAgent
 
 
     user_agent_rotator = UserAgent(software_names=['chrome'], operating_systems=['windows', 'linux'])
