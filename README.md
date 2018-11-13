@@ -4,38 +4,30 @@ Random User Agents
 Random User Agents is a python library that provides list of user agents,
 from a collection of more than 180,000+ user agents, based on filters.
 
-Filter names which can be passed to `UserAgent()` are listed below:
+Some of the filter names which can be passed to `UserAgent()` are listed below:
 
     operating_systems : [
-        'a-unix-based-os', 'haiku', 'webos', 'bada', 'symbian', 'windows-phone', 'freebsd',
-        'macos', 'ios', 'windows', 'blackberry-os', 'mac', 'windows-mobile', 'linux', 'sunos',
-        'beos', 'fire-os', 'chromeos', 'openbsd', 'android', 'mac-os-x', '---'
+        UNIX, LINUX, WINDOWS, MAC, ...
     ]
 
     hardware_types : [
-        'mobile -> tablet', 'mobile', 'mobile -> ebook-reader', 'mobile -> music-player', 'computer',
-        'large-screen -> media-player', 'mobile -> phone', 'mobile -> handheld-game', 'server',
-        'large-screen -> game-console', 'large-screen -> tv', '---'
+        MOBILE, COMPUTER, SERVER, ...
     ]
 
     software_types : [
-        'application -> software-library', 'bot -> analyser', 'bot -> site-monitor',
-        'browser -> web-browser', 'bot -> crawler', '---'
+        WEB_BROWSER, BOT__CRAWLER, BOT__ANALYSER, ...
     ]
 
     software_names : [
-        'qupzilla', 'opera-mini', 'catchpoint-analyser', 'yandex-search-bot', 'internet-channel', 'netsurf',
-        'alertsite-monitoring-bot', 'nokia-browser', 'edge', 'cosmos-crawler', 'rockmelt', 'opera', 'skyfire',
-        'k-meleon', 'pale-moon', 'uc-browser', 'yandex-browser', 'netscape-navigator', 'internet-archiver-bot',
-        'internet-tv-browser', 'awesomium', 'chromium', 'webtv', 'unknown-browser', 'onebrowser', 'firefox',
-        'android-browser', 'webkit-based-browser', 'obigo', 'yodaobot-search-bot', 'blackberry-browser',
-        'firefox-focus', 'omniweb', 'dotcom-monitor-bot', 'speedcurve-speed-tester', 'chrome',
-        'google-app-engine-software', '---'
+       EDGE, CHROME, CHROMIUM, ANDROID, FIREFOX, OPERA, ...
     ]
 
     software_engines : [
-        'Goanna', 'Gecko', 'Blink', 'Presto', 'WebKit', '---'
+       BLINK, GECKO, WEBKIT, ...
     ]
+
+
+*All filters are available in random_user_agent.params*
 
 
 Installation
@@ -56,9 +48,13 @@ To get user agents of browser `chrome` based on operating systems `windows` or `
 
 ```python
     from random_user_agent.user_agent import UserAgent
+    from random_user_agent.params import SoftwareNames, OperatingSystems
 
 
-    user_agent_rotator = UserAgent(software_names=['chrome'], operating_systems=['windows', 'linux'])
+    # you can also import SoftwareEngines, HardwareTypes, SoftwareTypes from random_user_agent.params
+
+
+    user_agent_rotator = UserAgent(software_names=[SoftwareNames.CHROME.value], operating_systems=[OperatingSystems.WINDOWS.value])
 
     # Get list of user agents.
     user_agents = user_agent_rotator.get_user_agents()
