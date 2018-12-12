@@ -92,3 +92,10 @@ class SoftwareTypes(Enum):
     BOT__CRAWLER = 'bot -> crawler'
     BOT__SITE_MONITOR = 'bot -> site-monitor'
     WEB_BROWSER = 'browser -> web-browser'
+
+
+class Popularity(Enum):
+    MOST_POPULAR = "very common"
+    POPULAR = "common"
+    AVERAGE = "average"
+    UNPOPULAR = "uncommon"

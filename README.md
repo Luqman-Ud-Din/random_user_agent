@@ -2,7 +2,7 @@ Random User Agents
 ==================
 
 Random User Agents is a python library that provides list of user agents,
-from a collection of more than 180,000+ user agents, based on filters.
+from a collection of more than 326,000+ user agents, based on filters.
 
 Some of the filter names which can be passed to `UserAgent()` are listed below:
 
@@ -24,6 +24,10 @@ Some of the filter names which can be passed to `UserAgent()` are listed below:
 
     software_engines : [
        BLINK, GECKO, WEBKIT, ...
+    ]
+    
+    popularity : [
+        MOST_POPULAR, POPULAR, AVERAGE, ....
     ]
 
 
@@ -51,10 +55,11 @@ To get user agents of browser `chrome` based on operating systems `windows` or `
     from random_user_agent.params import SoftwareNames, OperatingSystems
 
 
-    # you can also import SoftwareEngines, HardwareTypes, SoftwareTypes from random_user_agent.params
-
-
-    user_agent_rotator = UserAgent(software_names=[SoftwareNames.CHROME.value], operating_systems=[OperatingSystems.WINDOWS.value])
+    # you can also import SoftwareEngines, HardwareTypes, SoftwareTypes, Popularity from random_user_agent.params
+    # you can also set number of user agents required by providing limit as parameter
+    
+    # e.g To get 100 user agent for Chrome and operating system Windows
+    user_agent_rotator = UserAgent(software_names=[SoftwareNames.CHROME.value], operating_systems=[OperatingSystems.WINDOWS.value], limit=100)
 
     # Get list of user agents.
     user_agents = user_agent_rotator.get_user_agents()
