@@ -47,40 +47,27 @@ Or you can download direct from [Github](https://github.com/Luqman-Ud-Din/random
 Usage
 -----
 
-To get user agents of browser `chrome` based on operating systems `windows` or `linux`
+To get 100 user agents of browser `chrome` based on operating systems `windows` or `linux`
 
 
 ```python
     from random_user_agent.user_agent import UserAgent
-    from random_user_agent.params import SoftwareNames, OperatingSystems
+    from random_user_agent.params import SoftwareName, OperatingSystem
 
 
-    # you can also import SoftwareEngines, HardwareTypes, SoftwareTypes, Popularity from random_user_agent.params
-    # you can also set number of user agents required by providing limit as parameter
+    # you can also import SoftwareEngine, HardwareType, SoftwareType, Popularity from random_user_agent.params
+    # you can also set number of user agents required by providing `limit` as parameter
     
-    # e.g To get 100 user agent for Chrome and operating system Windows
-    user_agent_rotator = UserAgent(software_names=[SoftwareNames.CHROME.value], operating_systems=[OperatingSystems.WINDOWS.value], limit=100)
+    software_names = [SoftwareName.CHROME.value]
+    operating_systems = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value]   
+    
+    user_agent_rotator = UserAgent(software_names=software_names, operating_systems=operating_systems, limit=100)
 
     # Get list of user agents.
     user_agents = user_agent_rotator.get_user_agents()
 
     # Get Random User Agent String.
     user_agent = user_agent_rotator.get_random_user_agent()
-
-    # list all available operating systems
-    operating_systems = user_agent_rotator.get_operating_systems()
-
-    # list all available software names
-    operating_systems = user_agent_rotator.get_software_names()
-
-    # list all available software rendering engines
-    operating_systems = user_agent_rotator.get_software_engines()
-
-    # list all available software types
-    operating_systems = user_agent_rotator.get_software_types()
-
-    # list all available hardwrae types
-    operating_systems = user_agent_rotator.get_hardware_types()
 
 ```
 
