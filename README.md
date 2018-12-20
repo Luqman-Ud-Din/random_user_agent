@@ -27,7 +27,7 @@ Some of the filter names which can be passed to `UserAgent()` are listed below:
     ]
     
     popularity : [
-        MOST_POPULAR, POPULAR, AVERAGE, ....
+        POPULAR, COMMON, AVERAGE, ....
     ]
 
 
