@@ -14,9 +14,11 @@ class UserAgent:
         'popularity': [],
     }
 
-    def __init__(self, limit=None, *args, **kwargs):
+    def __init__(self, all =False, limit=None, *args, **kwargs):
         self.user_agents = []
-
+        if all:
+            self.user_agents = self.load_user_agents()
+            return
         for attribute, values in self.ATTRIBUTES_MAP.items():
             setattr(self, attribute, kwargs.get(attribute, [v.lower() for v in values]))
 
@@ -51,7 +53,6 @@ class UserAgent:
         with zipfile.ZipFile(file_path) as zipped_user_agents:
             with zipped_user_agents.open('user_agents.jl') as user_agents:
                 for user_agent in user_agents:
-
                     if hasattr(user_agent, 'decode'):
                         user_agent = user_agent.decode()
 
