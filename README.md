@@ -1,6 +1,12 @@
 Random User Agents
 ==================
 
+Use this command to install this forked version:
+
+```bash
+pip install -e git+https://github.com/iVictory2004/random_user_agent.git#egg=random_user_agent
+```
+
 Random User Agents is a python library that provides list of user agents,
 from a collection of more than 326,000+ user agents, based on filters.
 
