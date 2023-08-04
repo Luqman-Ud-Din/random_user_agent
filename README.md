@@ -44,9 +44,9 @@ Installation
 ------------
 
 You can install random_useragent by running the following command:
-
+```bash
   pip install -e git+https://github.com/iVictory2004/random_user_agent.git#egg=random_user_agent
-
+```
 Or you can download direct from [Github](https://github.com/Luqman-Ud-Din/random_user_agent) and install it manually.
 
 
