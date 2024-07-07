@@ -71,6 +71,39 @@ To get 100 user agents of browser `chrome` based on operating systems `windows` 
 
 ```
 
+New in 1.0.2
+---
+
+loading from a config file
+
+```python
+user_agent_rotator = UserAgent(config_file="mobile_devices.json", limit=100)
+```
+
+example config file:
+
+```json
+{
+    "operating_systems": ["ios", "android"],
+    "software_names": ["safari", "chrome"]
+}
+```
+
+all params values can be found in [params.py](random_user_agent/params.py)
+
+all params for config files: 
+
+```json
+{
+    "hardware_types": [],
+    "software_types": [],
+    "software_names": [],
+    "software_engines": [],
+    "operating_systems": [],
+    "popularity": []
+}
+```
+
 License
 -------
 The MIT License (MIT). Please see [License File](https://github.com/Luqman-Ud-Din/random_user_agent/blob/master/LICENSE) for more information.

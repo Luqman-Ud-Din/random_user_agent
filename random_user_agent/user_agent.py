@@ -14,8 +14,15 @@ class UserAgent:
         'popularity': [],
     }
 
-    def __init__(self, limit=None, *args, **kwargs):
+    def __init__(self, limit=None, config_file=None,*args, **kwargs):
         self.user_agents = []
+
+        if config_file:
+           try:
+            conf = open(config_file, 'r').read()
+            self.ATTRIBUTES_MAP = { **self.ATTRIBUTES_MAP , **json.loads(conf)}
+           except:
+               raise IOError("an error occured while opening the config file")
 
         for attribute, values in self.ATTRIBUTES_MAP.items():
             setattr(self, attribute, kwargs.get(attribute, [v.lower() for v in values]))
